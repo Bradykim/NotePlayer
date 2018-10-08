@@ -1,17 +1,18 @@
 package notePlayer;
 
+import java.util.Scanner;
+
 import core.MidiWrapper;
 
 public class NotePlayer
 {
     public static void main(String[] args)
     {
-    	// This is where you will begin writing your code, and this is where the program will start.
-    	// Although you can place all of your code here in main, we strongly suggest that you
-    	// separate your code into multiple helper methods.  Your main method should then call those
-    	// helper methods at the right places.  Organizing your code like this makes your code easier
-    	// to read and debug, and helps avoid duplicating code.  
-    	//Hello
+    	Scanner console = new Scanner(System.in);
+		System.out.print("What is your line? ");
+		String notesymbol= console.nextLine();
+		System.out.print("Note letter: "+ notesymbol.substring(0,1)+",");
+		System.out.print(" duration: " + notesymbol.substring(2,notesymbol.indexOf(" ")));
     }
 
     
