@@ -10,8 +10,11 @@ public class NotePlayer
     {
     	Scanner console = new Scanner(System.in);
 		String notesymbol= console.nextLine();
-		System.out.print("Note letter: "+ notesymbol.substring(0,1)+",");
-		System.out.print(" duration: " + notesymbol.substring(2,notesymbol.indexOf(" ")));
+		String s= notesymbol.substring(0,notesymbol.indexOf(" ")+1);
+		System.out.print("note letter: "+ s.substring(0,1)+",");
+		String b= s.substring(2,s.indexOf(" "));
+		int note= Integer.parseInt(b);
+		System.out.print(" duration: " + note);
     }
 
     
