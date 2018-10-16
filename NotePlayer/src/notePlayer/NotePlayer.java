@@ -8,47 +8,47 @@ public class NotePlayer
 {
     public static void main(String[] args)
     {
-    	Scanner console = new Scanner(System.in);
-		String notesymbol= console.nextLine();
-		//need to add for loop to account for each note
-		//for (x=0; x<= notesymbol.length(); x++)
-			String s= notesymbol.substring(0,notesymbol.indexOf(" ")+1);
-			String note=s.substring(0,1);
-			System.out.print("note letter: "+ note +",");
-			String duration= s.substring(s.indexOf("_")+1,s.indexOf(" "));
-			int durationMs= Integer.parseInt(duration);
-			System.out.print(" duration: " + durationMs);
-			int noteNumber = 0;
-	    	if(note.equals("C"))
+    		Scanner console = new Scanner(System.in);
+			String notesymbol= console.nextLine();
+			while(notesymbol.substring(1,2).equals("_"))
 			{
-				noteNumber=60;
+				String note=notesymbol.substring(0,1);
+				String duration= notesymbol.substring(notesymbol.indexOf("_")+1,notesymbol.indexOf(" "));
+				int durationMs= Integer.parseInt(duration);
+				int noteNumber = 0;
+		    	if(note.equals("C"))
+				{
+					noteNumber=60;
+				}
+				else if(note.equals("D"))
+				{
+					noteNumber=62;
+				}
+				else if(note.equals("E"))
+				{
+					noteNumber=64;
+				}
+				else if(note.equals("F"))
+				{
+					noteNumber=65;
+				}
+				else if(note.equals("G"))
+				{
+					noteNumber= 67;
+				}
+				else if(note.equals("A"))
+				{
+					noteNumber=69;
+				}
+				else if(note.equals("B"))
+				{
+					noteNumber=71;
+			
+				}
+		    	playNote(noteNumber, durationMs);
+		    	String s= notesymbol.substring(notesymbol.indexOf(" ")+1);
 			}
-			else if(note.equals("D"))
-			{
-				noteNumber=62;
-			}
-			else if(note.equals("E"))
-			{
-				noteNumber=64;
-			}
-			else if(note.equals("F"))
-			{
-				noteNumber=65;
-			}
-			else if(note.equals("G"))
-			{
-				noteNumber= 67;
-			}
-			else if(note.equals("A"))
-			{
-				noteNumber=69;
-			}
-			else if(note.equals("B"))
-			{
-				noteNumber=71;
-		
-			}
-	    	playNote(noteNumber, durationMs);
+			
 		}
 		
 
