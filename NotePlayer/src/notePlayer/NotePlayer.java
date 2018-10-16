@@ -10,53 +10,57 @@ public class NotePlayer
     {
     		Scanner console = new Scanner(System.in);
 			String notesymbol= console.nextLine();
-			while(notesymbol.indexOf(" ")>= -1)
+			while(notesymbol.length()>=1)
 			{
-				String note=notesymbol.substring(0,notesymbol.indexOf("_"));
-				String note2=" ";
-				if(note.length()==1)
+				if(notesymbol.length()==notesymbol.indexOf(" ")+1);
 				{
-					note2= note;
-				}
-				else if(note.length()==2)
-				{
-					note2=note.substring(0,1);
-				}
-				String duration= notesymbol.substring(notesymbol.indexOf("_")+1,notesymbol.indexOf(" "));
-				int durationMs= Integer.parseInt(duration);
-				int noteNumber = 0;
+					String note=notesymbol.substring(0,notesymbol.indexOf("_"));
+					String note2=" ";
+					if(note.length()==1)
+					{
+						note2= note;
+					}
+					else if(note.length()==2)
+					{
+						note2=note.substring(0,1);
+					}
+					String duration= notesymbol.substring(notesymbol.indexOf("_")+1,notesymbol.indexOf(" "));
+					int durationMs= Integer.parseInt(duration);
+					int noteNumber = 0;
+					
+			    	if(note2.equals("C"))
+					{
+						noteNumber=60;
+					}
+					else if(note2.equals("D"))
+					{
+						noteNumber=62;
+					}
+					else if(note2.equals("E"))
+					{
+						noteNumber=64;
+					}
+					else if(note2.equals("F"))
+					{
+						noteNumber=65;
+					}
+					else if(note2.equals("G"))
+					{
+						noteNumber= 67;
+					}
+					else if(note2.equals("A"))
+					{
+						noteNumber=69;
+					}
+					else if(note2.equals("B"))
+					{
+						noteNumber=71;
 				
-		    	if(note2.equals("C"))
-				{
-					noteNumber=60;
+					}
+			    	playNote(noteNumber, durationMs);
+			    	notesymbol = notesymbol.substring(notesymbol.indexOf(" ")+1);
 				}
-				else if(note2.equals("D"))
-				{
-					noteNumber=62;
-				}
-				else if(note2.equals("E"))
-				{
-					noteNumber=64;
-				}
-				else if(note2.equals("F"))
-				{
-					noteNumber=65;
-				}
-				else if(note2.equals("G"))
-				{
-					noteNumber= 67;
-				}
-				else if(note2.equals("A"))
-				{
-					noteNumber=69;
-				}
-				else if(note2.equals("B"))
-				{
-					noteNumber=71;
-			
-				}
-		    	playNote(noteNumber, durationMs);
-		    	notesymbol = notesymbol.substring(notesymbol.indexOf(" ")+1);
+				
 			}
 			
 		}
