@@ -27,7 +27,6 @@ public class NotePlayer
 					String duration= notesymbol.substring(notesymbol.indexOf("_")+1,notesymbol.indexOf(" "));
 					int durationMs= Integer.parseInt(duration);
 					int noteNumber = 0;
-					
 			    	if(note2.equals("C"))
 					{
 						noteNumber=60;
@@ -61,6 +60,7 @@ public class NotePlayer
 			    	notesymbol = notesymbol.substring(notesymbol.indexOf(" ")+1);
 			    	
 				}
+				
 				
 			}
 			
