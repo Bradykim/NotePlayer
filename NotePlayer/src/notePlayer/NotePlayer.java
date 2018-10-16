@@ -12,7 +12,7 @@ public class NotePlayer
 			String notesymbol= console.nextLine();
 			while(notesymbol.length()>=1)
 			{
-				if(notesymbol.length()==notesymbol.indexOf(" ")+1);
+				if(notesymbol.substring(notesymbol.length()-1,notesymbol.length()).equals(" "));
 				{
 					String note=notesymbol.substring(0,notesymbol.indexOf("_"));
 					String note2=" ";
@@ -59,6 +59,7 @@ public class NotePlayer
 					}
 			    	playNote(noteNumber, durationMs);
 			    	notesymbol = notesymbol.substring(notesymbol.indexOf(" ")+1);
+			    	
 				}
 				
 			}
