@@ -9,7 +9,7 @@ public class NotePlayer
     public static void main(String[] args)
     {
     		Scanner console = new Scanner(System.in);
-			String notesymbol= console.nextLine();
+			String notesymbol= console.nextLine()+" ";
 			while(notesymbol.length()>=1)
 			{
 				if(notesymbol.substring(notesymbol.length()-1,notesymbol.length()).equals(" "));
