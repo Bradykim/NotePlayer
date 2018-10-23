@@ -24,6 +24,7 @@ public class NotePlayer
 					}
 					else if(note.length()>=2)
 					{
+						note2=note.substring(0,1);
 						if(note.indexOf("#")>0)
 						{
 							noteNumber=note(note2)+1;
