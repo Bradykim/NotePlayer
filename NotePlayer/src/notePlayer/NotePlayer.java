@@ -24,32 +24,29 @@ public class NotePlayer
 					}
 					else if(note.length()>=2)
 					{
-						note2= note;
-						if(note.substring(1,2).equals("#"))
+						if(note.indexOf("#")>0)
 						{
 							noteNumber=note(note2)+1;
-							if(note.substring(2,3).equals("@"))
+							if(note.indexOf("@")>0)
 							{
-								String oct= note.substring(3,4);
+								String oct=note.substring(note.indexOf("@")+1);
 								int octa= Integer.parseInt(oct);
-								noteNumber=note(note2)+(12*octa);
+								noteNumber=noteNumber+(12*octa);
 							}
 						}
-						else if(note.substring(1,2).equals("b"))
+						else if(note.indexOf("b")>0)
 						{
 							noteNumber=note(note2)-1;
-							if(note.substring(2,3).equals("@"))
+							if(note.indexOf("@")>0)
 							{
-								String oct= note.substring(3,4);
+								String oct=note.substring(note.indexOf("@")+1);
 								int octa= Integer.parseInt(oct);
-								noteNumber=note(note2)+(12*octa);
+								noteNumber=noteNumber+(12*octa);
 							}
 						}
-						else if(note.substring(1,2).equals("@"))
+						else
 						{
-							String oct= note.substring(2,3);
-							int octa= Integer.parseInt(oct);
-							noteNumber=note(note2)+(12*octa);
+							noteNumber=note(note2);
 						}
 						
 					}
