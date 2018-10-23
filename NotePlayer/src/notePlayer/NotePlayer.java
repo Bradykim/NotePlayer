@@ -45,9 +45,11 @@ public class NotePlayer
 								noteNumber=noteNumber+(12*octa);
 							}
 						}
-						else
+						else if(note.indexOf("@")>0)
 						{
-							noteNumber=note(note2);
+							String oct=note.substring(note.indexOf("@")+1);
+							int octa= Integer.parseInt(oct);
+							noteNumber=noteNumber+(12*octa);
 						}
 						
 					}
