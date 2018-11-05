@@ -8,133 +8,139 @@ public class NotePlayer
 {
     public static void main(String[] args)
     {
-    		Scanner console = new Scanner(System.in);
-			String notesymbol= console.nextLine()+" ";
-			if(notesymbol.indexOf(",")>-1)
+    	Scanner console = new Scanner(System.in);
+    	String notesymbol= console.nextLine()+" ";
+			while(!notesymbol.equals("quit "))
 			{
-				String transpose= notesymbol.substring(0,notesymbol.indexOf("_"));
-				int transp= Integer.parseInt(transpose);
-				String tempo= notesymbol.substring(notesymbol.indexOf("_")+1,notesymbol.indexOf(","));
-				double temp= Double.parseDouble(tempo);
-				notesymbol= notesymbol.substring(notesymbol.indexOf(",")+1);
-				while(notesymbol.length()>=1)
+				if(notesymbol.indexOf(",")>-1)
 				{
-					if(notesymbol.substring(notesymbol.length()-1,notesymbol.length()).equals(" "));
+					String transpose= notesymbol.substring(0,notesymbol.indexOf("_"));
+					int transp= Integer.parseInt(transpose);
+					String tempo= notesymbol.substring(notesymbol.indexOf("_")+1,notesymbol.indexOf(","));
+					double temp= Double.parseDouble(tempo);
+					notesymbol= notesymbol.substring(notesymbol.indexOf(",")+1);
+					while(notesymbol.length()>=1)
 					{
-						int noteNumber=0;
-						String note=notesymbol.substring(0,notesymbol.indexOf("_"));
-						String note2=" ";
-						if(note.length()==1)
+						if(notesymbol.substring(notesymbol.length()-1,notesymbol.length()).equals(" "));
 						{
-							note2= note;
-							noteNumber=note(note2);
-						}
-						else if(note.length()>=2)
-						{
-							note2=note.substring(0,1);
-							if(note.indexOf("#")>0)
+							int noteNumber=0;
+							String note=notesymbol.substring(0,notesymbol.indexOf("_"));
+							String note2=" ";
+							if(note.length()==1)
 							{
-								noteNumber=note(note2)+1;
-								if(note.indexOf("@")>0)
-								{
-									String oct=note.substring(note.indexOf("@")+1);
-									int octa= Integer.parseInt(oct);
-									noteNumber=noteNumber+(12*octa);
-								}
-							}
-							else if(note.indexOf("b")>0)
-							{
-								noteNumber=note(note2)-1;
-								if(note.indexOf("@")>0)
-								{
-									String oct=note.substring(note.indexOf("@")+1);
-									int octa= Integer.parseInt(oct);
-									noteNumber=noteNumber+(12*octa);
-								}
-							}
-							else if(note.indexOf("@")>0)
-							{
+								note2= note;
 								noteNumber=note(note2);
-								String oct=note.substring(note.indexOf("@")+1);
-								int octa= Integer.parseInt(oct);
-								noteNumber=noteNumber+(12*octa);
 							}
+							else if(note.length()>=2)
+							{
+								note2=note.substring(0,1);
+								if(note.indexOf("#")>0)
+								{
+									noteNumber=note(note2)+1;
+									if(note.indexOf("@")>0)
+									{
+										String oct=note.substring(note.indexOf("@")+1);
+										int octa= Integer.parseInt(oct);
+										noteNumber=noteNumber+(12*octa);
+									}
+								}
+								else if(note.indexOf("b")>0)
+								{
+									noteNumber=note(note2)-1;
+									if(note.indexOf("@")>0)
+									{
+										String oct=note.substring(note.indexOf("@")+1);
+										int octa= Integer.parseInt(oct);
+										noteNumber=noteNumber+(12*octa);
+									}
+								}
+								else if(note.indexOf("@")>0)
+								{
+									noteNumber=note(note2);
+									String oct=note.substring(note.indexOf("@")+1);
+									int octa= Integer.parseInt(oct);
+									noteNumber=noteNumber+(12*octa);
+								}
+								
+							}
+							String duration= notesymbol.substring(notesymbol.indexOf("_")+1,notesymbol.indexOf(" "));
+							int durationMs= Integer.parseInt(duration);
+							durationMs= (int)(durationMs*temp);
+							noteNumber=noteNumber+transp;
 							
+							
+					    	playNote(noteNumber, durationMs);
+					    	notesymbol = notesymbol.substring(notesymbol.indexOf(" ")+1);
+					    	
 						}
-						String duration= notesymbol.substring(notesymbol.indexOf("_")+1,notesymbol.indexOf(" "));
-						int durationMs= Integer.parseInt(duration);
-						durationMs= (int)(durationMs*temp);
-						noteNumber=noteNumber+transp;
 						
 						
-				    	playNote(noteNumber, durationMs);
-				    	notesymbol = notesymbol.substring(notesymbol.indexOf(" ")+1);
-				    	
 					}
-					
-					
 				}
-			}
-			else
-			{
-				while(notesymbol.length()>=1)
+				else
 				{
-					if(notesymbol.substring(notesymbol.length()-1,notesymbol.length()).equals(" "));
+					while(notesymbol.length()>=1)
 					{
-						int noteNumber=0;
-						String note=notesymbol.substring(0,notesymbol.indexOf("_"));
-						String note2=" ";
-						if(note.length()==1)
+						if(notesymbol.substring(notesymbol.length()-1,notesymbol.length()).equals(" "));
 						{
-							note2= note;
-							noteNumber=note(note2);
-						}
-						else if(note.length()>=2)
-						{
-							note2=note.substring(0,1);
-							if(note.indexOf("#")>0)
+							int noteNumber=0;
+							String note=notesymbol.substring(0,notesymbol.indexOf("_"));
+							String note2=" ";
+							if(note.length()==1)
 							{
-								noteNumber=note(note2)+1;
-								if(note.indexOf("@")>0)
-								{
-									String oct=note.substring(note.indexOf("@")+1);
-									int octa= Integer.parseInt(oct);
-									noteNumber=noteNumber+(12*octa);
-								}
-							}
-							else if(note.indexOf("b")>0)
-							{
-								noteNumber=note(note2)-1;
-								if(note.indexOf("@")>0)
-								{
-									String oct=note.substring(note.indexOf("@")+1);
-									int octa= Integer.parseInt(oct);
-									noteNumber=noteNumber+(12*octa);
-								}
-							}
-							else if(note.indexOf("@")>0)
-							{
+								note2= note;
 								noteNumber=note(note2);
-								String oct=note.substring(note.indexOf("@")+1);
-								int octa= Integer.parseInt(oct);
-								noteNumber=noteNumber+(12*octa);
 							}
+							else if(note.length()>=2)
+							{
+								note2=note.substring(0,1);
+								if(note.indexOf("#")>0)
+								{
+									noteNumber=note(note2)+1;
+									if(note.indexOf("@")>0)
+									{
+										String oct=note.substring(note.indexOf("@")+1);
+										int octa= Integer.parseInt(oct);
+										noteNumber=noteNumber+(12*octa);
+									}
+								}
+								else if(note.indexOf("b")>0)
+								{
+									noteNumber=note(note2)-1;
+									if(note.indexOf("@")>0)
+									{
+										String oct=note.substring(note.indexOf("@")+1);
+										int octa= Integer.parseInt(oct);
+										noteNumber=noteNumber+(12*octa);
+									}
+								}
+								else if(note.indexOf("@")>0)
+								{
+									noteNumber=note(note2);
+									String oct=note.substring(note.indexOf("@")+1);
+									int octa= Integer.parseInt(oct);
+									noteNumber=noteNumber+(12*octa);
+								}
+								
+							}
+							String duration= notesymbol.substring(notesymbol.indexOf("_")+1,notesymbol.indexOf(" "));
+							int durationMs= Integer.parseInt(duration);
 							
+							
+					    	playNote(noteNumber, durationMs);
+					    	notesymbol = notesymbol.substring(notesymbol.indexOf(" ")+1);
+					    	
 						}
-						String duration= notesymbol.substring(notesymbol.indexOf("_")+1,notesymbol.indexOf(" "));
-						int durationMs= Integer.parseInt(duration);
 						
 						
-				    	playNote(noteNumber, durationMs);
-				    	notesymbol = notesymbol.substring(notesymbol.indexOf(" ")+1);
-				    	
 					}
-					
-					
 				}
+				Scanner consol = new Scanner(System.in);
+		    	notesymbol= console.nextLine()+" ";
 			}
 				
 		}
+  
     public static int note(String note2)
 	{
     	int noteNumber=0;
